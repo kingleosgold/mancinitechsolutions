@@ -1,95 +1,73 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
     }
+    setIsMenuOpen(false);
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg py-4' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container-custom px-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-primary-600 to-accent-500 flex items-center justify-center transition-all duration-300 ${
-              isScrolled ? 'shadow-md' : ''
-            }`}>
+    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo - Clickable to scroll to top */}
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+          >
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">M</span>
             </div>
-            <div>
-              <h1 className={`font-bold text-xl transition-colors duration-300 ${
-                isScrolled ? 'text-gray-900' : 'text-white'
-              }`}>
-                Mancini Tech Solutions
-              </h1>
-            </div>
-          </div>
+            <span className="text-xl font-bold text-gray-900">
+              Mancini Tech Solutions
+            </span>
+          </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button 
+          <nav className="hidden md:flex items-center gap-8">
+            <button
               onClick={() => scrollToSection('services')}
-              className={`font-medium transition-colors duration-300 hover:text-primary-600 ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Services
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('how-it-works')}
-              className={`font-medium transition-colors duration-300 hover:text-primary-600 ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               How It Works
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('portfolio')}
-              className={`font-medium transition-colors duration-300 hover:text-primary-600 ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Portfolio
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('pricing')}
-              className={`font-medium transition-colors duration-300 hover:text-primary-600 ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               Pricing
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('about')}
-              className={`font-medium transition-colors duration-300 hover:text-primary-600 ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
             >
               About
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('contact')}
-              className="btn-accent text-sm px-6 py-3"
+              className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Start Your Project
             </button>
@@ -97,55 +75,76 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 transition-colors duration-300 ${
-              isScrolled ? 'text-gray-900' : 'text-white'
-            }`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden mt-6 pb-6 space-y-4 animate-fade-in">
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="block w-full text-left py-2 text-gray-900 hover:text-primary-600 font-medium"
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('how-it-works')}
-              className="block w-full text-left py-2 text-gray-900 hover:text-primary-600 font-medium"
-            >
-              How It Works
-            </button>
-            <button 
-              onClick={() => scrollToSection('portfolio')}
-              className="block w-full text-left py-2 text-gray-900 hover:text-primary-600 font-medium"
-            >
-              Portfolio
-            </button>
-            <button 
-              onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left py-2 text-gray-900 hover:text-primary-600 font-medium"
-            >
-              Pricing
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="block w-full text-left py-2 text-gray-900 hover:text-primary-600 font-medium"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="btn-accent w-full text-center mt-4"
-            >
-              Start Your Project
-            </button>
-          </nav>
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-200">
+            <nav className="flex flex-col gap-4">
+              <button
+                onClick={() => scrollToSection('services')}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-left"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-left"
+              >
+                How It Works
+              </button>
+              <button
+                onClick={() => scrollToSection('portfolio')}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-left"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => scrollToSection('pricing')}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-left"
+              >
+                Pricing
+              </button>
+              <button
+                onClick={() => scrollToSection('about')}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-left"
+              >
+                About
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-md text-left"
+              >
+                Start Your Project
+              </button>
+            </nav>
+          </div>
         )}
       </div>
     </header>
