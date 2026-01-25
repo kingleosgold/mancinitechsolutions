@@ -9,20 +9,20 @@
     <meta property="og:description" content="We build privacy-first apps for people who value their data.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
+    <link rel="icon" type="image/png" href="/logo-white.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #FDFCFA;
-            --bg-alt: #F5F3EF;
-            --text: #1a1a1a;
-            --text-muted: #666;
-            --accent: #2D5A3D;
-            --accent-light: #3D7A52;
-            --gold: #C9A227;
-            --border: #E5E2DB;
+            --bg: #0a0a0a;
+            --bg-alt: #141414;
+            --bg-card: #1a1a1a;
+            --text: #ffffff;
+            --text-muted: #9CA3AF;
+            --gold: #D4A84B;
+            --gold-dim: #B8923F;
+            --border: #2a2a2a;
         }
 
         * {
@@ -36,6 +36,20 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+        }
+
+        /* Subtle grain texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 1000;
         }
 
         .container {
@@ -79,7 +93,7 @@
         }
 
         .contact-link:hover {
-            color: var(--accent);
+            color: var(--gold);
         }
 
         /* Hero */
@@ -101,7 +115,7 @@
 
         .hero h1 em {
             font-style: italic;
-            color: var(--accent);
+            color: var(--gold);
         }
 
         .hero-sub {
@@ -128,8 +142,20 @@
         }
 
         .philosophy-icon {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .philosophy-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.5;
         }
 
         .philosophy-item h3 {
@@ -159,7 +185,8 @@
         }
 
         .app-card {
-            background: var(--bg-alt);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 20px;
             padding: 48px;
             display: grid;
@@ -196,7 +223,7 @@
         }
 
         .feature-tag {
-            background: white;
+            background: var(--bg-alt);
             border: 1px solid var(--border);
             padding: 6px 14px;
             border-radius: 100px;
@@ -208,7 +235,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--accent);
+            color: var(--gold);
             text-decoration: none;
             font-weight: 500;
             transition: gap 0.2s ease;
@@ -227,7 +254,7 @@
             width: 200px;
             height: 200px;
             border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
 
         /* About */
@@ -281,7 +308,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--gold);
         }
 
         .footer-copy {
@@ -343,7 +370,7 @@
     <header>
         <div class="container header-inner">
             <a href="/" class="logo">
-                <img src="/logo.png" alt="Mancini Tech Solutions">
+                <img src="/logo-white.png" alt="Mancini Tech Solutions">
                 Mancini Tech Solutions
             </a>
             <a href="mailto:jon@mancinitechsolutions.com" class="contact-link">Get in touch</a>
@@ -362,17 +389,33 @@
             <div class="container">
                 <div class="philosophy-grid">
                     <div class="philosophy-item">
-                        <div class="philosophy-icon">🔒</div>
+                        <div class="philosophy-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
                         <h3>Local-First</h3>
                         <p>Your data lives on your device. No accounts, no cloud sync, no tracking.</p>
                     </div>
                     <div class="philosophy-item">
-                        <div class="philosophy-icon">🛠️</div>
+                        <div class="philosophy-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
                         <h3>Built to Last</h3>
                         <p>Simple, focused tools that do one thing well. No bloat, no feature creep.</p>
                     </div>
                     <div class="philosophy-item">
-                        <div class="philosophy-icon">🤝</div>
+                        <div class="philosophy-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
                         <h3>Community-Driven</h3>
                         <p>We build for specific communities, not mass markets. Quality over quantity.</p>
                     </div>
