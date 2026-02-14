@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mancini Tech Solutions — AI Automation & Custom Web Development</title>
-    <meta name="description" content="We help small and mid-size businesses modernize their operations with AI-powered tools, custom web applications, and workflow automation. Based in Connecticut.">
-    <meta property="og:title" content="Mancini Tech Solutions — AI Automation & Custom Web Development">
-    <meta property="og:description" content="We help small and mid-size businesses modernize their operations with AI-powered tools, custom web applications, and workflow automation.">
+    <title>Mancini Tech Solutions — Privacy-First Apps</title>
+    <meta name="description" content="We build privacy-first apps for people who value their data. Your information stays on your device, not our servers.">
+    <meta property="og:title" content="Mancini Tech Solutions — Privacy-First Apps">
+    <meta property="og:description" content="We build privacy-first apps for people who value their data.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://mancinitechsolutions.com/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,7 +55,7 @@
         }
 
         .container {
-            max-width: 720px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -101,7 +101,7 @@
 
         /* Hero */
         .hero {
-            padding: 100px 0 0;
+            padding: 100px 0 80px;
             text-align: center;
         }
 
@@ -111,35 +111,182 @@
             font-weight: 500;
             line-height: 1.2;
             margin-bottom: 24px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .services-list {
+        .hero h1 em {
+            font-style: italic;
             color: var(--gold);
-            font-size: 1.05rem;
-            font-weight: 500;
-            letter-spacing: 0.01em;
         }
 
-        /* Main content */
-        .content {
-            padding: 64px 0 80px;
-        }
-
-        .content p {
-            color: var(--text-muted);
+        .hero-sub {
             font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 24px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .philosophy-item {
             text-align: center;
         }
 
-        .content p:last-of-type {
-            margin-bottom: 0;
+        .philosophy-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .content p strong {
-            color: var(--text);
+        .philosophy-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .philosophy-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .philosophy-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Apps Section */
+        .apps {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .app-content h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 2rem;
             font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .app-tagline {
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .app-description {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .app-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .feature-tag {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .app-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.2s ease;
+        }
+
+        .app-link:hover {
+            gap: 12px;
+        }
+
+        .app-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-icon-large {
+            width: 200px;
+            height: 200px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        /* About */
+        .about {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .about-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-content p:last-of-type {
+            margin-bottom: 0;
         }
 
         /* Footer */
@@ -149,18 +296,22 @@
             text-align: center;
         }
 
-        .footer-email {
-            display: inline-block;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 500;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
             margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.2s ease;
         }
 
-        .footer-email:hover {
-            color: var(--gold-dim);
+        .footer-links a:hover {
+            color: var(--gold);
         }
 
         .footer-copy {
@@ -170,12 +321,34 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                padding: 64px 0 0;
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
 
-            .content {
-                padding: 48px 0 64px;
+            .app-card {
+                grid-template-columns: 1fr;
+                padding: 32px;
+                text-align: center;
+            }
+
+            .app-visual {
+                order: -1;
+            }
+
+            .app-icon-large {
+                width: 140px;
+                height: 140px;
+                border-radius: 28px;
+            }
+
+            .app-features {
+                justify-content: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
             }
         }
 
@@ -191,7 +364,7 @@
             }
         }
 
-        .hero, .content {
+        .hero, .philosophy, .apps, .about {
             animation: fadeUp 0.6s ease-out;
         }
     </style>
@@ -210,24 +383,92 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Mancini Tech Solutions</h1>
-                <p class="services-list">AI Automation &middot; Custom Web Development &middot; IT Infrastructure &middot; E-commerce Solutions</p>
+                <h1>Privacy-first apps for people who <em>value their data</em></h1>
+                <p class="hero-sub">Your information stays on your device, not our servers. We build tools for communities that care about ownership.</p>
             </div>
         </section>
 
-        <section class="content">
+        <section class="philosophy">
             <div class="container">
-                <p>We help small and mid-size businesses modernize their operations with AI-powered tools, custom web applications, and workflow automation.</p>
-                <p>Past experience includes building systems for Disney, Netflix, Raytheon, and Yale.</p>
-                <p>Based in Connecticut. Serving the Northeast.</p>
+                <div class="philosophy-grid">
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <h3>Local-First</h3>
+                        <p>Your data lives on your device. No accounts, no cloud sync, no tracking.</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3>Built to Last</h3>
+                        <p>Simple, focused tools that do one thing well. No bloat, no feature creep.</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3>Community-Driven</h3>
+                        <p>We build for specific communities, not mass markets. Quality over quantity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="apps">
+            <div class="container">
+                <p class="section-label">Our Apps</p>
+                <div class="app-card">
+                    <div class="app-content">
+                        <h2>Stack Tracker Gold</h2>
+                        <p class="app-tagline">For precious metals collectors</p>
+                        <p class="app-description">Track your gold and silver stack privately. Live spot prices, cost basis tracking, and beautiful analytics — all without creating an account or sending your data anywhere.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">iOS</span>
+                            <span class="feature-tag">Android (Beta)</span>
+                            <span class="feature-tag">Receipt Scanning</span>
+                            <span class="feature-tag">Widgets</span>
+                        </div>
+                        <a href="https://stacktrackergold.com" class="app-link">
+                            Learn more <span>→</span>
+                        </a>
+                    </div>
+                    <div class="app-visual">
+                        <img src="https://stacktrackergold.com/icon.png" alt="Stack Tracker Gold" class="app-icon-large">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About</h2>
+                    <p>Jon is an indie developer based in Connecticut. After years of working in technology for companies like Apple, Netflix, Disney, and Yale, he started Mancini Tech Solutions to build the tools he wanted to exist.</p>
+                    <p>He believes the best software respects its users. That means your data belongs to you, not to advertisers or data brokers. Every app he builds follows this principle.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <a href="mailto:jon@mancinitechsolutions.com" class="footer-email">jon@mancinitechsolutions.com</a>
-            <p class="footer-copy">&copy; 2026 Mancini Tech Solutions LLC</p>
+            <div class="footer-links">
+                <a href="mailto:jon@mancinitechsolutions.com">Contact</a>
+                <a href="https://stacktrackergold.com">Stack Tracker Gold</a>
+            </div>
+            <p class="footer-copy">© 2026 Mancini Tech Solutions LLC</p>
         </div>
     </footer>
 </body>
