@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Reveal from "./_components/Reveal";
+import ChatConsole from "./_components/ChatConsole";
 
 const CONTACT = "mailto:jon@mancinitechsolutions.com";
 
@@ -20,6 +22,15 @@ const steps = [
   },
 ];
 
+const solutionItems = [
+  "Change the headline.",
+  "Add an article.",
+  "Fix the popup.",
+  "Redesign a page.",
+];
+
+/* ---------- primitives ---------- */
+
 function Cta({
   children,
   className = "",
@@ -30,251 +41,339 @@ function Cta({
   return (
     <a
       href={CONTACT}
-      className={`group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-base font-semibold text-ink transition hover:bg-accent-soft hover:-translate-y-0.5 ${className}`}
+      className={`group inline-flex items-center gap-2.5 rounded-sm bg-accent px-6 py-3.5 text-[15px] font-semibold text-bg transition-colors duration-200 hover:bg-white ${className}`}
     >
       {children}
-      <span className="transition-transform group-hover:translate-x-1">
+      <span
+        aria-hidden
+        className="font-mono transition-transform duration-200 group-hover:translate-x-0.5"
+      >
         &rarr;
       </span>
     </a>
   );
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Kicker({ label, index }: { label: string; index?: string }) {
   return (
-    <p className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-      {children}
-    </p>
+    <div className="flex items-center justify-between">
+      <span className="font-mono text-xs uppercase tracking-label">
+        <span className="text-white/30">// </span>
+        <span className="text-accent">{label}</span>
+      </span>
+      {index ? (
+        <span className="font-mono text-xs text-white/25">{index}</span>
+      ) : null}
+    </div>
   );
 }
 
+function Plus({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`pointer-events-none absolute z-20 select-none font-mono text-base leading-none text-white/20 ${className}`}
+    >
+      +
+    </span>
+  );
+}
+
+function Section({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={`relative border-b border-white/[0.08] ${className}`}>
+      {children}
+      <Plus className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
+      <Plus className="bottom-0 right-0 translate-x-1/2 translate-y-1/2" />
+    </section>
+  );
+}
+
+const PAD = "px-6 sm:px-10 lg:px-14";
+
+/* ---------- page ---------- */
+
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
-      {/* ===== HERO (dark band, carries the logo) ===== */}
-      <section className="relative bg-ink text-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-1/3 right-[-10%] h-[640px] w-[640px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-content px-6 sm:px-10">
-          {/* Header */}
-          <header className="flex items-center justify-between py-7">
-            <Image
-              src="/logo-white.png"
-              alt="Mancini Tech Solutions"
-              width={180}
-              height={40}
-              priority
-              className="h-9 w-auto"
-            />
+    <main className="relative overflow-x-hidden">
+      <div className="mx-auto w-full max-w-frame border-x border-white/[0.08]">
+        {/* ===== HEADER ===== */}
+        <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-bg/80 backdrop-blur-md">
+          <div className={`flex items-center justify-between py-4 ${PAD}`}>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo-white.png"
+                alt="Mancini Tech Solutions"
+                width={160}
+                height={36}
+                priority
+                className="h-7 w-auto"
+              />
+              <span className="hidden font-mono text-xs uppercase tracking-label text-white/55 sm:inline">
+                Mancini Tech Solutions
+              </span>
+            </div>
             <a
               href={CONTACT}
-              className="hidden text-sm font-medium text-white/70 transition hover:text-accent sm:inline"
+              className="rounded-sm border border-white/15 px-3.5 py-1.5 font-mono text-xs uppercase tracking-wide text-white/80 transition-colors hover:border-accent hover:text-accent"
             >
               Let&rsquo;s talk
             </a>
-          </header>
+          </div>
+        </header>
 
-          {/* Hero content */}
-          <div className="max-w-4xl pb-28 pt-16 sm:pt-24">
-            <Eyebrow>Own your website</Eyebrow>
-            <h1 className="font-display text-[2.75rem] font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Stop renting your website.{" "}
-              <span className="italic text-accent">Own it</span>, and run it by
-              talking to AI.
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/60 sm:text-xl">
-              Wix, Squarespace, and Shopify rent you a site you&rsquo;ll never
-              own and can&rsquo;t fully control. We build you one you own
-              outright, and you change anything on it just by asking, in plain
-              English.
-            </p>
-            <div className="mt-12">
-              <Cta>Let&rsquo;s talk about your site</Cta>
+        {/* ===== HERO ===== */}
+        <Section>
+          <div className="grid lg:grid-cols-12">
+            {/* left: headline */}
+            <div
+              className={`lg:col-span-7 lg:border-r lg:border-white/[0.08] ${PAD} pb-12 pt-12 lg:py-24`}
+            >
+              <div className="rise" style={{ animationDelay: "0ms" }}>
+                <Kicker label="own your website" />
+              </div>
+              <h1
+                className="rise mt-7 text-[2.6rem] font-semibold leading-[1.04] tracking-[-0.025em] sm:text-6xl lg:text-[4.25rem] lg:leading-[1.02]"
+                style={{ animationDelay: "80ms" }}
+              >
+                Stop renting your website.{" "}
+                <span className="text-accent">Own it</span>, and run it by
+                talking to AI.
+              </h1>
+              <p
+                className="rise mt-7 max-w-xl text-base leading-relaxed text-white/55 sm:text-lg"
+                style={{ animationDelay: "200ms" }}
+              >
+                Wix, Squarespace, and Shopify rent you a site you&rsquo;ll never
+                own and can&rsquo;t fully control. We build you one you own
+                outright, and you change anything on it just by asking, in plain
+                English.
+              </p>
+              <div
+                className="rise mt-10"
+                style={{ animationDelay: "320ms" }}
+              >
+                <Cta>Let&rsquo;s talk about your site</Cta>
+              </div>
+            </div>
+
+            {/* right: chat console */}
+            <div
+              className={`lg:col-span-5 ${PAD} pb-14 pt-2 lg:flex lg:items-center lg:py-16`}
+            >
+              <div
+                className="rise w-full"
+                style={{ animationDelay: "240ms" }}
+              >
+                <div className="mb-3 flex items-center gap-2 font-mono text-[11px] uppercase tracking-label text-white/30">
+                  <span className="h-px w-6 bg-white/20" />
+                  live preview
+                </div>
+                <ChatConsole />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Section>
 
-      {/* ===== PROBLEM ===== */}
-      <section className="border-b border-black/5 bg-paper">
-        <div className="mx-auto max-w-content px-6 py-28 sm:px-10 sm:py-36">
-          <div className="max-w-3xl">
-            <Eyebrow>The trap</Eyebrow>
-            <h2 className="font-display text-4xl font-medium leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              You&rsquo;re renting.
-            </h2>
-            <p className="mt-8 text-xl leading-relaxed text-black/60 sm:text-2xl sm:leading-relaxed">
-              Every month you pay a platform to host a website you don&rsquo;t
-              own, built on something you can&rsquo;t leave, with custom pieces
-              you can&rsquo;t touch without hiring someone. That isn&rsquo;t your
-              website. It&rsquo;s theirs, rented to you.
-            </p>
-          </div>
-        </div>
-      </section>
+        {/* ===== PROBLEM ===== */}
+        <Section>
+          <Reveal className={`${PAD} py-20 lg:py-28`}>
+            <Kicker label="the trap" index="01" />
+            <div className="mt-10 grid gap-8 lg:grid-cols-12">
+              <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:col-span-7 lg:text-6xl">
+                You&rsquo;re renting.
+              </h2>
+              <p className="text-lg leading-relaxed text-white/55 sm:text-xl lg:col-span-5 lg:pt-3">
+                Every month you pay a platform to host a website you don&rsquo;t
+                own, built on something you can&rsquo;t leave, with custom pieces
+                you can&rsquo;t touch without hiring someone. That isn&rsquo;t
+                your website. It&rsquo;s theirs, rented to you.
+              </p>
+            </div>
+          </Reveal>
+        </Section>
 
-      {/* ===== SOLUTION ===== */}
-      <section className="border-b border-black/5 bg-white">
-        <div className="mx-auto grid max-w-content gap-12 px-6 py-28 sm:px-10 sm:py-36 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <Eyebrow>The shift</Eyebrow>
-            <h2 className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              We build you a website you own, and you run it by talking to it.
-            </h2>
-          </div>
-          <div className="lg:col-span-7 lg:pt-14">
-            <p className="text-lg leading-relaxed text-black/65 sm:text-xl sm:leading-relaxed">
-              The code is yours. The domain is in your name. Instead of fighting
-              a page editor or waiting on a developer, you just say what you
-              want.
-            </p>
-            <ul className="mt-8 grid gap-x-10 gap-y-3 sm:grid-cols-2">
-              {[
-                "Change the headline.",
-                "Add an article.",
-                "Fix the popup.",
-                "Redesign a page.",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 text-lg font-medium text-black/80"
-                >
-                  <span className="h-px w-6 bg-accent" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 text-lg leading-relaxed text-black/65 sm:text-xl sm:leading-relaxed">
-              The AI makes the change, shows it to you before it goes live, and
-              you publish with one click.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== HOW IT WORKS ===== */}
-      <section className="border-b border-black/5 bg-paper">
-        <div className="mx-auto max-w-content px-6 py-28 sm:px-10 sm:py-36">
-          <Eyebrow>How it works</Eyebrow>
-          <h2 className="max-w-2xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-            Three steps. No code. No waiting.
-          </h2>
-
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 sm:grid-cols-3">
-            {steps.map((step) => (
-              <div key={step.n} className="bg-paper p-8 sm:p-10">
-                <span className="font-display text-2xl text-accent">
-                  {step.n}
-                </span>
-                <h3 className="mt-5 text-xl font-semibold leading-snug text-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-black/55">
-                  {step.body}
+        {/* ===== SOLUTION ===== */}
+        <Section>
+          <Reveal className={`${PAD} py-20 lg:py-28`}>
+            <Kicker label="the shift" index="02" />
+            <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
+              <h2 className="text-3xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-4xl lg:col-span-5 lg:text-[2.9rem]">
+                We build you a website you own, and you run it by talking to it.
+              </h2>
+              <div className="lg:col-span-7 lg:pt-1">
+                <p className="text-lg leading-relaxed text-white/60">
+                  The code is yours. The domain is in your name. Instead of
+                  fighting a page editor or waiting on a developer, you just say
+                  what you want.
+                </p>
+                <ul className="mt-8 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
+                  {solutionItems.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 bg-bg px-4 py-4 transition-colors duration-200 hover:bg-white/[0.03]"
+                    >
+                      <span className="font-mono text-sm text-accent">+</span>
+                      <span className="text-[15px] font-medium text-white/85">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-8 text-lg leading-relaxed text-white/60">
+                  The AI makes the change, shows it to you before it goes live,
+                  and you publish with one click.
                 </p>
               </div>
-            ))}
-          </div>
+            </div>
+          </Reveal>
+        </Section>
 
-          <p className="mt-10 flex items-start gap-3 text-lg font-medium text-black/70">
-            <span className="mt-2 h-px w-6 shrink-0 bg-accent" />
-            You can&rsquo;t break your live site, and you&rsquo;re never locked
-            out of anything.
-          </p>
-        </div>
-      </section>
-
-      {/* ===== WHY IT'S DIFFERENT ===== */}
-      <section className="bg-ink text-white">
-        <div className="mx-auto max-w-content px-6 py-28 sm:px-10 sm:py-36">
-          <div className="max-w-3xl">
-            <Eyebrow>Why it&rsquo;s different</Eyebrow>
-            <h2 className="font-display text-4xl font-medium leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              You own it. <span className="text-accent">You control all of it.</span>
+        {/* ===== HOW IT WORKS ===== */}
+        <Section>
+          <Reveal className={`${PAD} py-20 lg:py-28`}>
+            <Kicker label="how it works" index="03" />
+            <h2 className="mt-10 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+              Three steps. No code. No waiting.
             </h2>
-            <p className="mt-8 text-lg leading-relaxed text-white/60 sm:text-xl sm:leading-relaxed">
-              Change a single word or redesign a whole page, it&rsquo;s the same
-              simple thing: ask, preview, publish. No code. No developer on
-              retainer. No platform that owns your work. And if you ever want to
-              leave, you take your entire site with you, because it was always
-              yours.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* ===== COST ===== */}
-      <section className="border-b border-black/5 bg-white">
-        <div className="mx-auto grid max-w-content gap-12 px-6 py-28 sm:px-10 sm:py-36 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <Eyebrow>The cost</Eyebrow>
-            <h2 className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              One time to own it. Pennies to run it.
-            </h2>
-          </div>
-          <div className="lg:col-span-7 lg:pt-12">
-            <p className="text-lg leading-relaxed text-black/65 sm:text-xl sm:leading-relaxed">
-              There&rsquo;s a one-time cost to build your site and move you off
-              the platform you&rsquo;re renting. After that, you own it, and
-              running it costs a few dollars a month instead of the thirty-plus
-              you pay now.
-            </p>
-            <p className="mt-6 font-display text-2xl font-medium leading-snug text-ink sm:text-3xl">
-              You stop renting, and you stop paying rent forever.
-            </p>
-          </div>
-        </div>
-      </section>
+            <div className="mt-12 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+              {steps.map((step) => (
+                <div
+                  key={step.n}
+                  className="group bg-bg p-6 transition-colors duration-200 hover:bg-white/[0.02] sm:p-8"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-sm text-accent">
+                      {step.n}
+                    </span>
+                    <span className="font-mono text-[11px] uppercase tracking-label text-white/20">
+                      step
+                    </span>
+                  </div>
+                  <h3 className="mt-6 text-lg font-semibold leading-snug text-white">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/50">
+                    {step.body}
+                  </p>
+                </div>
+              ))}
+            </div>
 
-      {/* ===== CLOSING / CTA ===== */}
-      <section className="relative overflow-hidden bg-ink text-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-content px-6 py-32 text-center sm:px-10 sm:py-44">
-          <h2 className="mx-auto max-w-4xl font-display text-4xl font-medium leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            You don&rsquo;t need us for anything. You can ask us for everything.
-          </h2>
-          <div className="mt-12">
-            <Cta className="px-10 py-5 text-lg">
-              Let&rsquo;s talk about your site
-            </Cta>
-          </div>
-        </div>
-      </section>
+            <p className="mt-8 flex items-start gap-3 font-mono text-sm leading-relaxed text-white/60">
+              <span className="text-accent">//</span>
+              <span>
+                You can&rsquo;t break your live site, and you&rsquo;re never
+                locked out of anything.
+              </span>
+            </p>
+          </Reveal>
+        </Section>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="bg-ink">
-        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-4 border-t border-white/10 px-6 py-10 sm:flex-row sm:px-10">
-          <Image
-            src="/logo-white.png"
-            alt="Mancini Tech Solutions"
-            width={150}
-            height={32}
-            className="h-7 w-auto opacity-80"
+        {/* ===== WHY IT'S DIFFERENT ===== */}
+        <Section>
+          <Reveal className={`${PAD} py-20 lg:py-28`}>
+            <Kicker label="why it's different" index="04" />
+            <div className="mt-10 grid gap-8 lg:grid-cols-12">
+              <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:col-span-7 lg:text-6xl">
+                You own it.{" "}
+                <span className="text-accent">You control all of it.</span>
+              </h2>
+              <p className="text-lg leading-relaxed text-white/55 lg:col-span-5 lg:pt-3">
+                Change a single word or redesign a whole page, it&rsquo;s the
+                same simple thing: ask, preview, publish. No code. No developer
+                on retainer. No platform that owns your work. And if you ever
+                want to leave, you take your entire site with you, because it was
+                always yours.
+              </p>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ===== COST ===== */}
+        <Section>
+          <Reveal className={`${PAD} py-20 lg:py-28`}>
+            <Kicker label="the cost" index="05" />
+            <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
+              <h2 className="text-3xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-4xl lg:col-span-5 lg:text-[2.9rem]">
+                One time to own it. Pennies to run it.
+              </h2>
+              <div className="lg:col-span-7 lg:pt-1">
+                <p className="text-lg leading-relaxed text-white/60">
+                  There&rsquo;s a one-time cost to build your site and move you
+                  off the platform you&rsquo;re renting. After that, you own it,
+                  and running it costs a few dollars a month instead of the
+                  thirty-plus you pay now.
+                </p>
+                <p className="mt-8 border-l-2 border-accent pl-5 text-2xl font-semibold leading-snug tracking-[-0.01em] text-white sm:text-[1.75rem]">
+                  You stop renting, and you stop paying rent forever.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ===== CLOSING / CTA ===== */}
+        <Section className="overflow-hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-32 top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(240,180,60,0.08) 0%, transparent 70%)",
+            }}
           />
-          <p className="text-sm text-white/40">
-            &copy; 2026 Mancini Tech Solutions LLC. North Haven, Connecticut.
-          </p>
-          <a
-            href={CONTACT}
-            className="text-sm font-medium text-white/60 transition hover:text-accent"
+          <Plus className="left-0 top-0 -translate-x-1/2 -translate-y-1/2" />
+          <Plus className="right-0 top-0 translate-x-1/2 -translate-y-1/2" />
+          <Reveal className={`relative ${PAD} py-24 lg:py-32`}>
+            <h2 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:text-6xl">
+              You don&rsquo;t need us for anything.{" "}
+              <span className="text-accent">
+                You can ask us for everything.
+              </span>
+            </h2>
+            <div className="mt-12">
+              <Cta className="px-8 py-4 text-base">
+                Let&rsquo;s talk about your site
+              </Cta>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ===== FOOTER ===== */}
+        <footer>
+          <div
+            className={`flex flex-col items-start justify-between gap-5 py-8 sm:flex-row sm:items-center ${PAD}`}
           >
-            jon@mancinitechsolutions.com
-          </a>
-        </div>
-      </footer>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo-white.png"
+                alt="Mancini Tech Solutions"
+                width={140}
+                height={30}
+                className="h-6 w-auto opacity-80"
+              />
+              <span className="font-mono text-xs text-white/40">
+                &copy; 2026 Mancini Tech Solutions LLC. North Haven,
+                Connecticut.
+              </span>
+            </div>
+            <a
+              href={CONTACT}
+              className="font-mono text-xs text-white/50 transition-colors hover:text-accent"
+            >
+              jon@mancinitechsolutions.com
+            </a>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }

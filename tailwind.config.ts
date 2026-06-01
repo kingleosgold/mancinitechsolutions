@@ -8,17 +8,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B0B0C",
-        paper: "#FBFAF8",
-        accent: "#C9A84C",
-        "accent-soft": "#D4BA6A",
+        // near-black base + elevated surfaces
+        bg: "#09090A",
+        panel: "#0D0D0F",
+        elevated: "#111114",
+        // single sharp accent (refined amber — complements the mono M mark)
+        accent: "#F0B43C",
+        "accent-dim": "#5a4716",
+        // status only
+        online: "#3FB950",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
-        content: "72rem",
+        frame: "1180px",
+      },
+      letterSpacing: {
+        label: "0.18em",
       },
     },
   },
