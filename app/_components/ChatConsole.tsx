@@ -17,7 +17,7 @@ const FALLBACK = `I'm getting a lot of questions right now. Email ${CONTACT} and
 const GREETING: Message = {
   role: "assistant",
   content:
-    "Ask me anything about owning your site instead of renting it — how it works, what it costs, or moving off Wix or Squarespace.",
+    "Ask me anything about bringing AI into your business. What it can do, what it costs, where to start.",
 };
 
 const TEXTAREA_MAX_PX = 120; // ~5 lines, then it scrolls
@@ -228,7 +228,7 @@ export default function ChatConsole() {
             onBlur={() => setFocused(false)}
             disabled={loading}
             maxLength={1000}
-            placeholder="Ask anything about owning your site…"
+            placeholder="Ask anything about AI in your business…"
             aria-label="Ask the assistant a question"
             // Hide the native caret only while empty, where the decorative block
             // caret stands in for it — so there's never two cursors at once.

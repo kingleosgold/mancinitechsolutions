@@ -19,18 +19,19 @@ const siteUrl = "https://mancinitechsolutions.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Mancini Tech Solutions — Own your website. Run it by talking to AI.",
+  title:
+    "Mancini Tech Solutions | AI Consulting for Business. Adoption, Automation, Custom Software.",
   description:
-    "Stop renting your website from Wix, Squarespace, or Shopify. We build you a site you own outright, and you change anything on it just by asking, in plain English.",
+    "AI consulting firm run by Jon Mancini, 14 years of enterprise IT across Apple, Netflix, Disney, Raytheon, and Kuehne + Nagel. We find where AI fits your business, build the automation, and train your people until it sticks.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Stop renting your website. Own it, and run it by talking to AI.",
+    title: "Your business has AI. Nobody's using it.",
     description:
-      "We build you a website you own outright, and you change anything on it just by asking, in plain English.",
+      "AI consulting firm run by Jon Mancini. We find where AI fits your business, build the automation, and train your people until it sticks.",
     url: siteUrl,
     siteName: "Mancini Tech Solutions",
     type: "website",
@@ -45,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stop renting your website. Own it, and run it by talking to AI.",
+    title: "Your business has AI. Nobody's using it.",
     description:
-      "We build you a website you own outright, and you change anything on it just by asking, in plain English.",
+      "AI consulting firm run by Jon Mancini. We find where AI fits your business, build the automation, and train your people until it sticks.",
     images: ["/og-image.png"],
   },
 };

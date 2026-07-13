@@ -7,26 +7,26 @@ const CONTACT = "mailto:jon@mancinitechsolutions.com";
 const steps = [
   {
     n: "01",
-    title: "Tell it what you want, in plain English.",
-    body: "No editor to learn, no tickets to file. You describe the change the way you'd say it out loud.",
+    title: "We look at how the work happens now.",
+    body: "A short discovery across your team's real workflows, not a slide deck about AI.",
   },
   {
     n: "02",
-    title: "See the change on a preview, before anything goes live.",
-    body: "Nothing touches your real site until you've looked at it and decided you like it.",
+    title: "We pilot on one workflow that matters.",
+    body: "You see the change on real work before anything rolls out wider.",
   },
   {
     n: "03",
-    title: "Publish with one click. Undo just as easily.",
-    body: "Ship it the moment it's right — and roll it back the moment you change your mind.",
+    title: "We train your team and stay until it sticks.",
+    body: "Documentation, training, and support, the part most AI projects skip.",
   },
 ];
 
 const solutionItems = [
-  "Change the headline.",
-  "Add an article.",
-  "Fix the popup.",
-  "Redesign a page.",
+  "Find the workflows where AI saves real hours. Documents, reporting, communications, follow-ups.",
+  "Build the automation and connect it to the tools you already use.",
+  "Train your people until the new way is the default way.",
+  "Show you what changed. Usage, time saved, work shipped.",
 ];
 
 /* ---------- primitives ---------- */
@@ -136,30 +136,35 @@ export default function Home() {
               className={`lg:col-span-7 lg:border-r lg:border-white/[0.08] ${PAD} pb-12 pt-12 lg:py-24`}
             >
               <div className="rise" style={{ animationDelay: "0ms" }}>
-                <Kicker label="own your website" />
+                <Kicker label="ai consulting" />
               </div>
               <h1
                 className="rise mt-7 text-[2.6rem] font-semibold leading-[1.04] tracking-[-0.025em] sm:text-6xl lg:text-[4.25rem] lg:leading-[1.02]"
                 style={{ animationDelay: "80ms" }}
               >
-                Stop renting your website.{" "}
-                <span className="text-accent">Own it</span>, and run it by
-                talking to AI.
+                Your business has AI.{" "}
+                <span className="text-accent">Nobody&rsquo;s using it.</span>
               </h1>
               <p
                 className="rise mt-7 max-w-xl text-base leading-relaxed text-white/55 sm:text-lg"
                 style={{ animationDelay: "200ms" }}
               >
-                Wix, Squarespace, and Shopify rent you a site you&rsquo;ll never
-                own and can&rsquo;t fully control. We build you one you own
-                outright, and you change anything on it just by asking, in plain
-                English.
+                Mancini Tech Solutions is an AI consulting firm in Connecticut.
+                We find where AI actually fits your business, build the
+                automation, and train your people until it sticks.
+              </p>
+              <p
+                className="rise mt-5 max-w-xl font-mono text-xs leading-relaxed text-white/35"
+                style={{ animationDelay: "260ms" }}
+              >
+                Run by Jon Mancini. 14 years of enterprise IT at Apple, Yale,
+                Disney, Raytheon, Netflix, and Kuehne + Nagel.
               </p>
               <div
                 className="rise mt-10"
                 style={{ animationDelay: "320ms" }}
               >
-                <Cta>Let&rsquo;s talk about your site</Cta>
+                <Cta>Let&rsquo;s talk about your business</Cta>
               </div>
             </div>
 
@@ -176,6 +181,10 @@ export default function Home() {
                   live preview
                 </div>
                 <ChatConsole />
+                <p className="mt-3 font-mono text-[11px] leading-relaxed text-white/35">
+                  This assistant is our own build. It runs the same way we set
+                  things up for clients.
+                </p>
               </div>
             </div>
           </div>
@@ -184,16 +193,16 @@ export default function Home() {
         {/* ===== PROBLEM ===== */}
         <Section>
           <Reveal className={`${PAD} py-20 lg:py-28`}>
-            <Kicker label="the trap" index="01" />
+            <Kicker label="the problem" index="01" />
             <div className="mt-10 grid gap-8 lg:grid-cols-12">
               <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:col-span-7 lg:text-6xl">
-                You&rsquo;re renting.
+                Everyone bought AI. Almost nobody changed how they work.
               </h2>
               <p className="text-lg leading-relaxed text-white/55 sm:text-xl lg:col-span-5 lg:pt-3">
-                Every month you pay a platform to host a website you don&rsquo;t
-                own, built on something you can&rsquo;t leave, with custom pieces
-                you can&rsquo;t touch without hiring someone. That isn&rsquo;t
-                your website. It&rsquo;s theirs, rented to you.
+                Your team has ChatGPT accounts and AI features inside the
+                software you already pay for, and the work still gets done the
+                old way. That gap between having AI and using it is expensive,
+                and closing it takes more than another subscription.
               </p>
             </div>
           </Reveal>
@@ -202,18 +211,13 @@ export default function Home() {
         {/* ===== SOLUTION ===== */}
         <Section>
           <Reveal className={`${PAD} py-20 lg:py-28`}>
-            <Kicker label="the shift" index="02" />
+            <Kicker label="what we do" index="02" />
             <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
               <h2 className="text-3xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-4xl lg:col-span-5 lg:text-[2.9rem]">
-                We build you a website you own, and you run it by talking to it.
+                We make AI part of how your business actually runs.
               </h2>
               <div className="lg:col-span-7 lg:pt-1">
-                <p className="text-lg leading-relaxed text-white/60">
-                  The code is yours. The domain is in your name. Instead of
-                  fighting a page editor or waiting on a developer, you just say
-                  what you want.
-                </p>
-                <ul className="mt-8 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
+                <ul className="grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
                   {solutionItems.map((item) => (
                     <li
                       key={item}
@@ -227,8 +231,8 @@ export default function Home() {
                   ))}
                 </ul>
                 <p className="mt-8 text-lg leading-relaxed text-white/60">
-                  The AI makes the change, shows it to you before it goes live,
-                  and you publish with one click.
+                  Advisory when you need direction. Hands-on build when you need
+                  it done.
                 </p>
               </div>
             </div>
@@ -240,7 +244,7 @@ export default function Home() {
           <Reveal className={`${PAD} py-20 lg:py-28`}>
             <Kicker label="how it works" index="03" />
             <h2 className="mt-10 max-w-2xl text-3xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
-              Three steps. No code. No waiting.
+              Three steps. Start small, prove it, make it stick.
             </h2>
 
             <div className="mt-12 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
@@ -270,8 +274,7 @@ export default function Home() {
             <p className="mt-8 flex items-start gap-3 font-mono text-sm leading-relaxed text-white/60">
               <span className="text-accent">//</span>
               <span>
-                You can&rsquo;t break your live site, and you&rsquo;re never
-                locked out of anything.
+                Every step happens on your real work, with your real team.
               </span>
             </p>
           </Reveal>
@@ -280,19 +283,30 @@ export default function Home() {
         {/* ===== WHY IT'S DIFFERENT ===== */}
         <Section>
           <Reveal className={`${PAD} py-20 lg:py-28`}>
-            <Kicker label="why it's different" index="04" />
+            <Kicker label="who's behind this" index="04" />
             <div className="mt-10 grid gap-8 lg:grid-cols-12">
               <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:col-span-7 lg:text-6xl">
-                You own it.{" "}
-                <span className="text-accent">You control all of it.</span>
+                Who&rsquo;s behind this.
               </h2>
-              <p className="text-lg leading-relaxed text-white/55 lg:col-span-5 lg:pt-3">
-                Change a single word or redesign a whole page, it&rsquo;s the
-                same simple thing: ask, preview, publish. No code. No developer
-                on retainer. No platform that owns your work. And if you ever
-                want to leave, you take your entire site with you, because it was
-                always yours.
-              </p>
+              <div className="lg:col-span-5 lg:pt-3">
+                <p className="text-lg leading-relaxed text-white/55">
+                  Mancini Tech Solutions is Jon Mancini. 14+ years of enterprise
+                  IT across Apple, Yale, Yale New Haven Hospital, Travelers,
+                  Disney, Raytheon, Netflix, and Kuehne + Nagel. Infrastructure,
+                  identity, unified communications, and technology rollouts at
+                  scales from hundreds of users to 80,000, including more than
+                  500 employees trained through a single nationwide transition.
+                </p>
+                <p className="mt-6 text-lg leading-relaxed text-white/55">
+                  Today I build with AI every day. Two production iOS apps live
+                  in the App Store, a multi-tenant platform for an academic
+                  health-sciences client with role-based access control and
+                  single sign-on, and AI workflow automation for Connecticut
+                  businesses. I also serve as Director of Technology &amp; AI
+                  for The Aldrich Group, advising its member companies on
+                  automation and technology adoption.
+                </p>
+              </div>
             </div>
           </Reveal>
         </Section>
@@ -300,22 +314,39 @@ export default function Home() {
         {/* ===== COST ===== */}
         <Section>
           <Reveal className={`${PAD} py-20 lg:py-28`}>
-            <Kicker label="the cost" index="05" />
+            <Kicker label="we also build" index="05" />
             <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
               <h2 className="text-3xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-4xl lg:col-span-5 lg:text-[2.9rem]">
-                One time to own it. Pennies to run it.
+                We build software too.
               </h2>
               <div className="lg:col-span-7 lg:pt-1">
                 <p className="text-lg leading-relaxed text-white/60">
-                  There&rsquo;s a one-time cost to build your site and move you
-                  off the platform you&rsquo;re renting. After that, you own it,
-                  and running it costs a few dollars a month instead of the
-                  thirty-plus you pay now.
+                  Websites you own outright and run by talking to AI. Custom
+                  apps. Internal tools and ops platforms. If the answer to your
+                  problem is software that doesn&rsquo;t exist yet, we build it
+                  and hand you the keys.
                 </p>
                 <p className="mt-8 border-l-2 border-accent pl-5 text-2xl font-semibold leading-snug tracking-[-0.01em] text-white sm:text-[1.75rem]">
-                  You stop renting, and you stop paying rent forever.
+                  Domain and code in your name, always.
                 </p>
               </div>
+            </div>
+          </Reveal>
+        </Section>
+
+        {/* ===== ENGAGEMENTS ===== */}
+        <Section>
+          <Reveal className={`${PAD} py-20 lg:py-28`}>
+            <Kicker label="engagements" index="06" />
+            <div className="mt-10 grid gap-8 lg:grid-cols-12">
+              <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:col-span-7 lg:text-6xl">
+                How engagements work.
+              </h2>
+              <p className="text-lg leading-relaxed text-white/55 sm:text-xl lg:col-span-5 lg:pt-3">
+                Projects are priced as projects, not hours. We start small,
+                prove it on real work, and grow from there. You own everything
+                we build.
+              </p>
             </div>
           </Reveal>
         </Section>
@@ -334,14 +365,14 @@ export default function Home() {
           <Plus className="right-0 top-0 translate-x-1/2 -translate-y-1/2" />
           <Reveal className={`relative ${PAD} py-24 lg:py-32`}>
             <h2 className="max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:text-6xl">
-              You don&rsquo;t need us for anything.{" "}
+              Your business already has AI.{" "}
               <span className="text-accent">
-                You can ask us for everything.
+                Let&rsquo;s make it actually work.
               </span>
             </h2>
             <div className="mt-12">
               <Cta className="px-8 py-4 text-base">
-                Let&rsquo;s talk about your site
+                Let&rsquo;s talk about your business
               </Cta>
             </div>
           </Reveal>
